@@ -1,0 +1,49 @@
+{
+  "name": "dsh-token-saver",
+  "version": "0.3.1",
+  "description": "DeepSeek Harness plugin that cuts token spend without hurting task success: progressive tool disclosure for oversized schemas (measured 2/3 off the per-request tool payload) and deterministic tool-result compaction behind a never-worse double gate. · DSH 省 token 插件：工具 schema 渐进披露（实测每请求省 2/3）+ 工具结果确定性压缩（双门控保证只会更省）。",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json",
+    "./compress": "./lib/compress.js"
+  },
+  "files": [
+    "lib",
+    "docs",
+    "test",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "token",
+    "token-saving",
+    "context",
+    "compaction",
+    "tool-output",
+    "cordis"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "pack": "npm pack"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1",
+    "tokenx": "^1.6.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

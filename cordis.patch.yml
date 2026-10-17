@@ -1,0 +1,32 @@
+# dsh-token-saver bundle patch: one host entry, all defaults restated so a
+# later profile layer can override any single key.
+- insert:
+    - id: token-saver
+      name: dsh-token-saver
+      config:
+        # Lever 1: progressive tool disclosure
+        foldToolSchemas: true
+        foldThresholdTokens: 2000
+        minVisibleTools: 4
+        alwaysKeepTools: []
+        # Lever 2: tool-result compaction
+        compactResults: true
+        maxChars: 24000
+        minSavingChars: 500
+        keepRatioMax: 0.75
+        keepErrorsIntact: true
+        skipTools: []
+        # Lever 3: history thinking elision — OFF: DSH refuses assistant/message
+        # surface replacement (sourceEventSeqs is forbidden for it while replace
+        # requires it). Enabling it only logs rejections; see README.
+        elideThinking: false
+        keepRecentTurns: 1
+        # Lever 4 (experimental): request-level thinking elision — rewrites only
+        # the outgoing request; the session log stays untouched. Off by default
+        # until verified against a live provider.
+        requestThinkingElision: false
+        requestThinkingElisionKeepTurns: 1
+        # Companion tools
+        lookupTool: true
+        reportTool: true
+        verbose: false
